@@ -1,40 +1,19 @@
 import { FlatList, Text, View } from "react-native";
 import useStyles from "./styles";
 import Category from "./Category";
-const data: string[] = [
-  "beauty",
-  "fragrances",
-  "furniture",
-  "groceries",
-  "home-decoration",
-  "kitchen-accessories",
-  "laptops",
-  "mens-shirts",
-  "mens-shoes",
-  "mens-watches",
-  "mobile-accessories",
-  "motorcycle",
-  "skin-care",
-  "smartphones",
-  "sports-accessories",
-  "sunglasses",
-  "tablets",
-  "tops",
-  "vehicle",
-  "womens-bags",
-  "womens-dresses",
-  "womens-jewellery",
-  "womens-shoes",
-  "womens-watches",
-];
+import useCategories from "../../hooks/useCategories";
+import renderEmpty from "@/components/emptyList";
 
 function CategoryList() {
   const styles = useStyles();
+  const { data, error, isLoading, refetch } = useCategories();
   console.log("Rendering CategoryList");
   return (
     <View>
       <Text style={styles.title}>Categories</Text>
       <FlatList
+        onRefresh={refetch}
+        refreshing={isLoading}
         horizontal
         data={data}
         keyExtractor={(item) => item}
@@ -48,6 +27,13 @@ function CategoryList() {
           offset: 65 * index,
           index,
         })}
+        ListEmptyComponent={() =>
+          renderEmpty({
+            loading: isLoading,
+            error: error?.message ?? null,
+            fetchData: refetch,
+          })
+        }
       />
     </View>
   );

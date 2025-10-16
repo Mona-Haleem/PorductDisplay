@@ -7,9 +7,12 @@ import { RootState } from "@/store";
 import Button from "@/components/UI/Button";
 import useStyles from "./style";
 import { Ionicons } from "@expo/vector-icons";
+import { useDeleteProduct } from "../../hooks/useDeleteProduct";
 
 function ProductCard({ product }: { product: Product }) {
   const { superadmin } = useSelector((state: RootState) => state.auth);
+  const { mutate: deleteProduct, isPending } = useDeleteProduct();
+  console.log("Rendering ProductCard for product:",product.isDeleted, product.id, deleteProduct);
   const style = useStyles();
   return (
     <View style={style.productCard}>
@@ -24,7 +27,7 @@ function ProductCard({ product }: { product: Product }) {
 
       <Text style={style.ProductTitle} ellipsizeMode="tail" numberOfLines={2}>{product.title}</Text>
       {superadmin && 
-      <TouchableOpacity style={style.deleteButton} onPress={() => {}}>
+      <TouchableOpacity style={style.deleteButton} onPress={() => deleteProduct(product.id)} >
         <Ionicons name="trash" size={24} color="#fcf" />
       </TouchableOpacity>
       }

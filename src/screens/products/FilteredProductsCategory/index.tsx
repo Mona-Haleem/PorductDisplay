@@ -2,8 +2,8 @@ import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 
 import { RootState } from "@/store";
-import ProductList from "../products/productsList";
-import Header from "../Header/Header";
+import ProductList from "../components/products/productsList";
+import Header from "../components/Header/Header";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "@/utils/Theme/ThemeContext";
 import { useRoute } from "@react-navigation/native";

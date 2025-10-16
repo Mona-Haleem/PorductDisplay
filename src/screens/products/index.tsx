@@ -2,9 +2,9 @@ import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 
 import { RootState } from "@/store";
-import CategoryList from "./Categories/CategoryList";
-import ProductList from "./products/productsList";
-import Header from "./Header/Header";
+import CategoryList from "./components/Categories/CategoryList";
+import ProductList from "./components/products/productsList";
+import Header from "./components/Header/Header";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "@/utils/Theme/ThemeContext";
 function ProductScreen() {

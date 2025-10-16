@@ -6,6 +6,7 @@ const useStyles = makeThemedStyles((theme) => ({
     marginVertical:10,
   },
   title:{
+    textTransform:"capitalize",
     marginTop:10,
     paddingHorizontal:10,
     fontSize: 16,
