@@ -25,7 +25,11 @@ export const useStyles = makeThemedStyles((theme) => ({
   form: {
     alignItems: "center",
   },
-  gradien: {
-    height: 200,
+
+  errorText: {
+    color: theme.colors.error,
+    fontSize: 14,
+    marginLeft: 20,
+    marginTop: 5,
   },
 }));

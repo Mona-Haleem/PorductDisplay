@@ -7,7 +7,7 @@ import LoginForm from "./LoginForm";
 function LoginScreen() {
   const styles = useStyles();
   const { theme } = useTheme();
-
+  console.log("Rendering LoginScreen");
   return (
     <LinearGradient
       colors={theme.gradient}
