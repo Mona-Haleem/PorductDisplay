@@ -3,18 +3,31 @@ import { makeThemedStyles } from "@/utils/Theme/makeThemedStyles";
 const useStyles = makeThemedStyles((theme) => ({
   container: {
     paddingBottom: 20,
-    marginVertical: 10,
+    marginVertical: 0,
     marginHorizontal: "auto",
+  },
+  titleContainer: {
+    flexDirection: "row",
+    gap: 1,
+    justifyContent: "flex-start",
+    alignItems: "flex-end",
+    paddingLeft: 10,
   },
   title: {
     textTransform: "capitalize",
     marginVertical: 10,
 
-    paddingHorizontal: 10,
     fontSize: 16,
     fontWeight: "bold",
     color: theme.colors.text,
-    marginLeft: 10,
+  },
+  highlight: {
+    ...theme.textShadow,
+    marginRight: 3,
+    color: theme.colors.primary,
+    textTransform: "capitalize",
+    fontSize: 18,
+    fontWeight: "bold",
   },
   row: {
     gap: 10,
@@ -26,6 +39,7 @@ const useStyles = makeThemedStyles((theme) => ({
     elevation: 2,
     borderRadius: 20,
     margin: 10,
+   
     overflow: "hidden",
   },
   img: {

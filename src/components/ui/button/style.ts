@@ -12,11 +12,14 @@ const styles = makeThemedStyles((theme) => ({
   button: {
     width: "50%",
     backgroundColor: theme.colors.primary,
+    borderWidth:1,
+    borderColor:theme.colors.primary,
     ...theme.shadow,
   },
   outlinedButton: {
     borderColor: theme.colors.primary,
     borderWidth: 2,
+    
   },
   buttonText: {
     color: theme.colors.text,

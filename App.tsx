@@ -8,7 +8,7 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import { Provider } from "react-redux";
 import { mmkvPersister } from "@/utils/storage";
 import { OfflineIndicator } from "@/components/offlineIndicator";
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1000 * 60 * 5,

@@ -6,4 +6,5 @@ export type loginCredentials = {
 export type User ={
   username:string;
   image:string;
+  source?:string;
 }

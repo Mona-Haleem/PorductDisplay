@@ -7,14 +7,16 @@ import { Product } from "@/utils/types/product";
 
 function ProductList({ category }: { category?: string }) {
   const styles = useStyles();
-  const { data, error,isRefetching, isLoading, refetch } = useProducts(category);
+  const { data, error, isRefetching, isLoading, refetch } =
+    useProducts(category);
 
   //console.log("Rendering ProductList");
   return (
     <View style={{ flex: 1 }}>
-      <Text style={styles.title}>
-        Featured {category?.replace("-", " ") ?? ""} Products
-      </Text>
+      <View style={styles.titleContainer}>
+        {category && <Text style={[styles.title ,styles.highlight]}>{category?.replace("-", " ") ?? "Featured"}</Text>}
+        <Text style={styles.title}>Products</Text>
+      </View>
       <FlatList
         onRefresh={refetch}
         refreshing={isRefetching}
@@ -28,7 +30,7 @@ function ProductList({ category }: { category?: string }) {
         //   />
         // }
 
-        data={data?.filter((item:Product) => !item.isDeleted)}
+        data={data?.filter((item: Product) => !item.isDeleted)}
         numColumns={2}
         keyExtractor={(item) => item.title}
         renderItem={({ item }) => <ProductCard product={item} />}

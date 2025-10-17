@@ -13,11 +13,22 @@ export interface ShadowProps {
   shadowRadius: number;
   elevation: number;
 }
+
+export interface TextShadowProps  {
+  textShadowColor: string;
+  textShadowOffset: {
+    width: number;
+    height: number;
+  };
+  textShadowRadius: number;
+};
+
 export interface AppTheme {
   mode: "light" | "dark";
   colors: ThemeColors;
   gradient: readonly string[];
   shadow: ShadowProps;
+  textShadow:TextShadowProps;
 }
 
 export const lightTheme: AppTheme = {
@@ -38,6 +49,10 @@ export const lightTheme: AppTheme = {
     shadowRadius: 6,
     elevation: 5,
   },
+   textShadow:{textShadowColor: "#0005f",
+
+    textShadowOffset: { height: 1, width: -1 },
+    textShadowRadius: 2}
 };
 
 export const darkTheme: AppTheme = {
@@ -58,4 +73,8 @@ export const darkTheme: AppTheme = {
     shadowRadius: 6,
     elevation: 10,
   },
+  textShadow:{textShadowColor: "#0005f",
+
+    textShadowOffset: { height: 1, width: -1 },
+    textShadowRadius: 2}
 };

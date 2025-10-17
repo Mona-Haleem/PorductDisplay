@@ -14,7 +14,7 @@ import { RootState } from "@/store";
 const LockOverlay = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();
   const styles = useStyles();
-  const { biometricModalShown } = useSelector((state: RootState) => state.auth);
+  const { biometricModalShown ,currentScreen } = useSelector((state: RootState) => state.auth);
 
   const appState = useRef<AppStateStatus>(AppState.currentState);
   const inactivityTimer = useRef<NodeJS.Timeout | null>(null);
@@ -32,6 +32,7 @@ const LockOverlay = ({ children }: { children: React.ReactNode }) => {
     }, AUTO_LOCK_TIME);
   }, [dispatch]);
 
+  
   useEffect(() => {
     console.log("[LockOverlay] Mounting LockOverlay component");
 
@@ -63,12 +64,19 @@ const LockOverlay = ({ children }: { children: React.ReactNode }) => {
   }, [dispatch, resetTimer]);
 
   useEffect(() => {
-    console.log(`[LockOverlay] biometricModalShown changed: ${biometricModalShown}`);
+    console.log(`[LockOverlay] biometricModalShown changed: ${biometricModalShown}`,currentScreen);
     if (!biometricModalShown) {
       console.log("[LockOverlay] Modal hidden — restarting inactivity timer");
       resetTimer();
     }
-  }, [biometricModalShown, resetTimer]);
+    return () => {
+      console.log("[LockOverlay] Unmounting LockOverlay component");
+      if (inactivityTimer.current) {
+        console.log("[LockOverlay] Clearing inactivity timer on unmount");
+        clearTimeout(inactivityTimer.current);
+      }
+    };
+  }, [biometricModalShown, resetTimer ,currentScreen]);
 
   return (
     <TouchableWithoutFeedback

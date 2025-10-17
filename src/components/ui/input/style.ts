@@ -17,7 +17,9 @@ export const useStyles = makeThemedStyles((theme) => ({
     backgroundColor: theme.colors.secondary,
     borderRadius: 10,
     paddingHorizontal: 20,
-    elevation: 1,
+    elevation: 2,
+    borderWidth:1,
+    borderColor: theme.colors.secondary,
   },
   
   input: {
@@ -27,6 +29,7 @@ export const useStyles = makeThemedStyles((theme) => ({
     flex: 1,
     fontSize: 18,
     width: "100%",
+  
   },
   iconContainer: {
     position: "absolute",

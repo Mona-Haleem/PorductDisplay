@@ -37,6 +37,7 @@ const useStyles = makeThemedStyles((theme) => ({
     fontSize: 20,
     fontWeight: "bold",
     color: theme.colors.primary,
+    ...theme.textShadow
   },
   theme: {
     borderColor: theme.colors.primary,

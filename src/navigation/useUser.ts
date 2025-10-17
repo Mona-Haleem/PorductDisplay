@@ -1,9 +1,11 @@
 import { getMe } from "@/api/auth";
+import { storage } from "@/utils/storage";
 import { useQuery } from "@tanstack/react-query";
 
 
-const useUser =(token?:string)=>{
-    const query =useQuery({
+const useUser = ()=>{
+  const token = storage.getString('accsessToken')
+  const query =useQuery({
     queryKey: ["userData"],
     queryFn: () => getMe(token!),
     enabled: !!token,

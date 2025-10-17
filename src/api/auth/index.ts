@@ -10,6 +10,8 @@ export const login = async (credentials: loginCredentials) => {
 
 
 export const getMe = async (accessToken: string) => {
+    console.log("fetching user data");
+  
   const response = await axios.get(`${API_BASE}/auth/me`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,

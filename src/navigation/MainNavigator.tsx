@@ -13,39 +13,47 @@ import useStyles from "./styles";
 import { useEffect } from "react";
 import { useTheme } from "@/utils/Theme/ThemeContext";
 import { storage } from "@/utils/storage";
-import { setUser, toggleBiometricModal } from "@/store/slices/authSlice";
+import { setLoadingState, setUser, toggleBiometricModal } from "@/store/slices/authSlice";
 import useUser from "./useUser";
 import Loading from "@/components/UI/Loading/loading";
 import Gradient from "@/components/UI/Gradient";
 import Toast from "react-native-toast-message";
 import { getFriendlyErrorMessage } from "@/utils/helpers";
+import LockOverlay from "@/components/LockOverlay";
+import AuthModal from "@/components/auth/BiometricModal";
+import DeleteModal from "@/components/DeleteModal";
 export default function MainNavigator() {
   const token = storage.getString("accessToken");
   const dispatch = useDispatch();
-  const { user } = useSelector((state: RootState) => state.auth);
+  const { user, biometricModalShown, loading, deleteModal } = useSelector(
+    (state: RootState) => state.auth
+  );
 
   const { theme } = useTheme();
   const style = useStyles();
-  //console.log("User in MainNavigator:", user, theme.mode);
-
-  const { data, isLoading, isError, error } = useUser(token);
+  
+  const { data, isLoading,  error } = useUser();
+  console.log("User in MainNavigator:", isLoading,  error ,!!token, user, theme.mode);
 
   useEffect(() => {
-    if (data) {
+    if (data && user?.source !=="loginScreen") {
       dispatch(setUser({ username: data.username, image: data.image }));
       dispatch(toggleBiometricModal(true));
+      dispatch(setLoadingState(false));
     } else if (error) {
       Toast.show({
-      type: "error",
-      text1: getFriendlyErrorMessage(error.message) || "Session Expired",
-      text2: "Please try again later.",
-    }); }
+        type: "error",
+        text1: getFriendlyErrorMessage(error.message) || "Session Expired",
+        text2: "Please try again later.",
+      });
+      dispatch(setLoadingState(false));
+    } 
+    if(!token) dispatch(setLoadingState(false))
 
     //console.log("fetched data", data);
-  }, [data,error]);
+  }, [data, error,token]);
 
- 
-  if (isLoading)
+  if (loading || isLoading)
     return (
       <Gradient style={style.loadingScreen}>
         <Loading />
@@ -58,7 +66,16 @@ export default function MainNavigator() {
     >
       <SafeAreaView style={style.container}>
         <StatusBar style="auto" translucent={true} />
-        {user ? <AppNavigator /> : <AuthNavigator />}
+        {user ? (
+          <LockOverlay>
+            {biometricModalShown && <AuthModal />}
+            {deleteModal.visisble && <DeleteModal />}
+
+            <AppNavigator />
+          </LockOverlay>
+        ) : (
+          <AuthNavigator />
+        )}
       </SafeAreaView>
     </NavigationContainer>
   );

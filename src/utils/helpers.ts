@@ -18,12 +18,15 @@ export const startBiometricAuth = async (onSuccess :()=>void , onFail:()=>void) 
       const result = await LocalAuthentication.authenticateAsync({
         promptMessage: "Authenticate",
         cancelLabel: "Cancel",
-        fallbackLabel: "Use Password",
+        //fallbackLabel: "Use Password",
+        disableDeviceFallback: true
       });
 
       if (result.success) {
+        console.log("Here")
         onSuccess();
       } else {
+        console.log("failed")
         onFail()
       }
     } catch (err) {

@@ -14,9 +14,9 @@ const PasswordModal: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const queryClient = useQueryClient();
   const cachedData = queryClient.getQueryData(["userData"]);
- 
-
+  console.log('pass',password);
   const handlePasswordSubmit = useCallback(() => {
+      console.log(password,'---',cachedData?.password)
     if (password === cachedData?.password) {
       dispatch(toggleBiometricModal(false));
       setError("");
@@ -25,7 +25,7 @@ const PasswordModal: React.FC = () => {
     //console.log('falsePass',error)
       setError("Password incorrect");
     }
-  }, [cachedData,dispatch, setError]);
+  }, [password,cachedData,dispatch, setError]);
 //console.log('isinvalid',!!error,error)
  
   return (

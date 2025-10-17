@@ -3,15 +3,12 @@ import { StyleSheet } from "react-native";
 import CategoryList from "./components/Categories/CategoryList";
 import ProductList from "./components/products/productsList";
 import Header from "./components/Header/Header";
-import { useTheme } from "@/utils/Theme/ThemeContext";
 import Gradient from "@/components/UI/Gradient";
+import useSetScreen from "./hooks/UseSetScreen";
 function ProductScreen() {
-  const { theme } = useTheme();
-  //console.log("logged in ");
+  useSetScreen();
   return (
-    <Gradient
-     
-    >
+    <Gradient>
       <Header />
       <CategoryList />
       <ProductList />
