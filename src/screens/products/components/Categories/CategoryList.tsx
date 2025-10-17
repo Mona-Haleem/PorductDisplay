@@ -7,7 +7,7 @@ import renderEmpty from "@/components/emptyList";
 function CategoryList() {
   const styles = useStyles();
   const { data, error, isLoading, refetch } = useCategories();
-  console.log("Rendering CategoryList");
+  //console.log("Rendering CategoryList");
   return (
     <View>
       <Text style={styles.title}>Categories</Text>

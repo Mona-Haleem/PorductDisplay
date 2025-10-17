@@ -1,5 +1,4 @@
 import { makeThemedStyles } from "@/utils/Theme/makeThemedStyles";
-import { head } from "axios";
 
 export const useStyles = makeThemedStyles((theme) => ({
   container: {

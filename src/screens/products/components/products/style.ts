@@ -3,19 +3,21 @@ import { makeThemedStyles } from "@/utils/Theme/makeThemedStyles";
 const useStyles = makeThemedStyles((theme) => ({
   container: {
     paddingBottom: 20,
-    marginVertical:10,
+    marginVertical: 10,
+    marginHorizontal: "auto",
   },
-  title:{
-    textTransform:"capitalize",
-    marginTop:10,
-    paddingHorizontal:10,
+  title: {
+    textTransform: "capitalize",
+    marginVertical: 10,
+
+    paddingHorizontal: 10,
     fontSize: 16,
     fontWeight: "bold",
     color: theme.colors.text,
-    marginBottom: 10,
+    marginLeft: 10,
   },
   row: {
-    justifyContent: "space-between",
+    gap: 10,
   },
   productCard: {
     height: 180,
@@ -23,28 +25,27 @@ const useStyles = makeThemedStyles((theme) => ({
     backgroundColor: theme.colors.secondary,
     elevation: 2,
     borderRadius: 20,
-    margin: 5,
+    margin: 10,
     overflow: "hidden",
   },
   img: {
     width: "100%",
     height: 100,
   },
-  productData:{
-    flex:1,
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    padding:10
+  productData: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 10,
   },
   ProductTitle: {
-    alignSelf:"flex-start",
+    alignSelf: "flex-start",
     fontSize: 16,
     fontWeight: "bold",
     color: theme.colors.text,
     marginBottom: 10,
-    maxWidth:'70%',
-
+    maxWidth: "70%",
   },
   deleteButton: {
     alignSelf: "flex-end",

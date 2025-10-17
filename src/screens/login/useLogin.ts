@@ -11,7 +11,7 @@ export function useLogin() {
   return useMutation({
     mutationFn: (credentials: loginCredentials) => login(credentials),
     onSuccess: (data) => {
-      console.log("Login successful:", data);
+      //console.log("Login successful:", data);
       if (data?.accessToken) {
         storage.set("accessToken", data.accessToken);
         dispatch(setUser(data));
@@ -19,7 +19,7 @@ export function useLogin() {
       }
     },
     onError: (error) => {
-      console.log("Login failed:", error);
+      //console.log("Login failed:", error);
     },
   });
 }

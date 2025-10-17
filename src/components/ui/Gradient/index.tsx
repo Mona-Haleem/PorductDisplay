@@ -1,26 +1,27 @@
-import { useStyles } from "./styles";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "@/utils/Theme/ThemeContext";
-import Header from "./Header";
-import LoginForm from "./LoginForm";
 
-function LoginScreen() {
-  const styles = useStyles();
+type GradientProps = {
+  style?: object;
+  children: React.ReactNode;
+};
+function Gradient({
+  style = { flex: 1, hight: "100%", width: "100%" ,padding:15},
+  children,
+}: GradientProps) {
   const { theme } = useTheme();
-  //console.log("Rendering LoginScreen");
+  //console.log("Rendering Gradient");
   return (
     <LinearGradient
       colors={theme.gradient as any}
       locations={[0, 0.4, 0.6, 1]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
-      style={styles.container}
+      style={style}
     >
-      <Header />
-
-      <LoginForm />
+      {children}
     </LinearGradient>
   );
 }
 
-export default LoginScreen;
+export default Gradient;

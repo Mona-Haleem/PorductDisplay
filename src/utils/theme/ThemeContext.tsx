@@ -21,7 +21,7 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<AppTheme>(lightTheme);
-    console.log('themeContext rendered' ,theme.mode)
+    //console.log('themeContext rendered' ,theme.mode)
   useEffect(() => {
     const savedMode = storage.getString('themeMode'); 
     if (savedMode === 'dark') {
@@ -39,7 +39,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     setTheme((prev) => {
       const newTheme = prev.mode === 'dark' ? lightTheme : darkTheme;
       storage.set('themeMode', newTheme.mode);
-      console.log('theme changed')
+      //console.log('theme changed')
       return newTheme;
     });
   };

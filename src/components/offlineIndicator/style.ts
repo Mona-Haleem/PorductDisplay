@@ -2,7 +2,7 @@ import { makeThemedStyles } from "@/utils/Theme/makeThemedStyles";
 
 const useStyles = makeThemedStyles((theme) => ({
   container: {
-    backgroundColor: "#ff6b6b",
+    backgroundColor: theme.colors.primary,
     padding: 8,
     alignItems: "center",
   },

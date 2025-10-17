@@ -34,6 +34,7 @@ export const useStyles = makeThemedStyles((theme) => ({
     paddingHorizontal: 10,
   },
   errorText: {
+    color: theme.colors.error,
     fontSize: 14,
     marginLeft: 20,
     marginTop: 5,

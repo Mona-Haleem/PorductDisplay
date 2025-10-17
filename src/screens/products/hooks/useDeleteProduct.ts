@@ -29,10 +29,10 @@ export const useDeleteProduct = () => {
         );
       });
 
-      console.log(
-        "Product deleted successfully",
-        queryClient.getQueryData(["products"])
-      );
+      //console.log(
+        //"Product deleted successfully",
+        //queryClient.getQueryData(["products"])
+      //);
     },
 
     onError: (err, productId, context) => {

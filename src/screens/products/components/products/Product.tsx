@@ -12,7 +12,7 @@ import { useDeleteProduct } from "../../hooks/useDeleteProduct";
 function ProductCard({ product }: { product: Product }) {
   const { superadmin } = useSelector((state: RootState) => state.auth);
   const { mutate: deleteProduct, isPending } = useDeleteProduct();
-  console.log("Rendering ProductCard for product:",product.isDeleted, product.id, deleteProduct);
+ // //console.log("Rendering ProductCard for product:",product.isDeleted, product.id, deleteProduct);
   const style = useStyles();
   return (
     <View style={style.productCard}>

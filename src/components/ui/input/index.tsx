@@ -9,6 +9,7 @@ interface InputProps extends TextInputProps {
   labelStyle?: object;
   inputStyle?: object;
   endIcon?: React.ReactNode; 
+  isInvalid?:boolean;
   onEndIconPress?: () => void;
   validator?:(value: string)=>boolean;
 }
@@ -20,6 +21,7 @@ const Input: React.FC<InputProps> = ({
   labelStyle,
   inputStyle,
   endIcon,
+  isInvalid,
   validator,
   onEndIconPress,
   ...props
@@ -28,11 +30,12 @@ const Input: React.FC<InputProps> = ({
   const [error, setError] = useState<string>('')
   const [isFocusd, setIsFocused] = useState<boolean>(false)
   const handelValidation = ()=>{
+    //console.log(isInvalid)
     if(validator && !validator(props?.value?.trim()!))
       setError(errorMessage || 'Invalid input');
     setIsFocused(false);
   }
-
+  //console.log('input rerendered')
 
   return (
     <View style={[styles.container, containerStyle]}>
@@ -51,7 +54,7 @@ const Input: React.FC<InputProps> = ({
           </TouchableOpacity>
         )}
         </View>
-      {error && <Text style={styles.errorText}>{errorMessage}</Text>}
+      {error || isInvalid && <Text style={styles.errorText}>{errorMessage}</Text>}
     </View>
   );
 };

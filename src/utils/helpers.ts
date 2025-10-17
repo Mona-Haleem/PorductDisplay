@@ -1,8 +1,42 @@
+import { Ionicons } from "@expo/vector-icons";
+import * as LocalAuthentication from "expo-local-authentication";
+
+export const checkBiometricAvailability = async () => {
+    try {
+      const compatible = await LocalAuthentication.hasHardwareAsync();
+      const enrolled = await LocalAuthentication.isEnrolledAsync();
+      return compatible && enrolled;
+    } catch (err) {
+      console.error("Biometric check error:", err);
+      return false;
+    }
+  };
+
+export const startBiometricAuth = async (onSuccess :()=>void , onFail:()=>void) => {
+    
+  try {
+      const result = await LocalAuthentication.authenticateAsync({
+        promptMessage: "Authenticate",
+        cancelLabel: "Cancel",
+        fallbackLabel: "Use Password",
+      });
+
+      if (result.success) {
+        onSuccess();
+      } else {
+        onFail()
+      }
+    } catch (err) {
+      console.error("Biometric authentication error:", err);
+      onFail();
+    }
+  };
+
 export function getFriendlyErrorMessage(error: unknown): string {
   if (!error) return "Something went wrong. Please try again.";
 
   const message = (error as Error)?.message || String(error);
-console.log("original Error message:", message);
+//console.log("original Error message:", message);
   if (message.includes("Network")) return "Network error — please check your internet connection.";
   if (message.includes("400")) return "Invalid username or password.";
     if (message.includes("timeout")) return "The request took too long. Try again in a moment.";
@@ -12,4 +46,36 @@ console.log("original Error message:", message);
   if (message.includes("500")) return "Server error — we’re working on fixing it.";
 
   return "Something went wrong. Please try again.";
+}
+
+
+export function getCategoryIcon(category: string): keyof typeof Ionicons.glyphMap {
+  const map: Record<string, keyof typeof Ionicons.glyphMap> = {
+    beauty: "color-palette-outline",
+    fragrances: "flask-outline",
+    furniture: "bed-outline",
+    groceries: "cart-outline",
+    "home-decoration": "home-outline",
+    "kitchen-accessories": "restaurant-outline",
+    laptops: "laptop-outline",
+    "mens-shirts": "shirt-outline",
+    "mens-shoes": "walk-outline",
+    "mens-watches": "time-outline",
+    "mobile-accessories": "headset-outline",
+    motorcycle: "bicycle-outline",
+    "skin-care": "leaf-outline",
+    smartphones: "phone-portrait-outline",
+    "sports-accessories": "football-outline",
+    sunglasses: "sunny-outline",
+    tablets: "tablet-portrait-outline",
+    tops: "shirt-outline",
+    vehicle: "car-outline",
+    "womens-bags": "bag-outline",
+    "womens-dresses": "body-outline",
+    "womens-jewellery": "sparkles-outline",
+    "womens-shoes": "walk-outline",
+    "womens-watches": "time-outline",
+  };
+
+  return map[category] ?? "help-circle-outline";
 }

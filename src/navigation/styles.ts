@@ -13,5 +13,11 @@ const useStyles = makeThemedStyles((theme) => ({
   activeTintColor: {
     color: theme.colors.primary,
   },
+  loadingScreen: {
+    flex: 1,
+    width: "100%",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+  },
 }));
 export default useStyles;

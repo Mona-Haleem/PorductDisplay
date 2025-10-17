@@ -1,19 +1,22 @@
 import { makeThemedStyles } from "@/utils/Theme/makeThemedStyles";
 
 const styles = makeThemedStyles((theme) => ({
-  button: {
+  baseButton: {
     marginTop: 20,
+    paddingVertical: 10,
+    flexDirection: "row",
+    borderRadius: 10,
+    justifyContent: "center",
+    gap: 10,
+  },
+  button: {
     width: "50%",
     backgroundColor: theme.colors.primary,
-    paddingVertical: 10,
-    borderRadius: 10,
-    alignSelf: "center",
-    elevation: 2,
+    ...theme.shadow,
   },
-  secondaryButton:{
-    marginTop: 20,
-    paddingVertical: 10,
-    alignSelf: "center",
+  outlinedButton: {
+    borderColor: theme.colors.primary,
+    borderWidth: 2,
   },
   buttonText: {
     color: theme.colors.text,
@@ -21,12 +24,17 @@ const styles = makeThemedStyles((theme) => ({
     fontWeight: "bold",
     fontSize: 20,
   },
-  secondaryButtonText:{
-    opacity:0.6,
+  secondaryButtonText: {
+    opacity: 0.6,
     color: theme.colors.text,
     textAlign: "center",
     fontSize: 16,
-  }
+  },
+  disabled: {
+    backgroundColor: theme.colors.secondary,
+    opacity: 0.6,
+    elevation: 0,
+  },
 }));
 
 export default styles;

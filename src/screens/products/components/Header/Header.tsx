@@ -10,7 +10,7 @@ function Header() {
   const { user } = useSelector((state: RootState) => state.auth);
   const { theme, toggleTheme } = useTheme();
   const styles = useStyles();
-  console.log("logged in ", user);
+  //console.log("logged in ", user);
   return (
     <View style={styles.header}>
       <View style={styles.userContainer}>

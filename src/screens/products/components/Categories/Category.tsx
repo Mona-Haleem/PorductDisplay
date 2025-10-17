@@ -6,7 +6,7 @@ import useStyles from "./styles";
 
 function Category({ category }: { category: string }) {
    const styles = useStyles();
-   console.log("rendered category", category)
+  // //console.log("rendered category", category)
    const navigation = useNavigation();
     return (
     <TouchableOpacity

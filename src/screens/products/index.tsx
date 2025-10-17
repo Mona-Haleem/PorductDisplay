@@ -1,27 +1,21 @@
-import { View, Text, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
+import { StyleSheet } from "react-native";
 
-import { RootState } from "@/store";
 import CategoryList from "./components/Categories/CategoryList";
 import ProductList from "./components/products/productsList";
 import Header from "./components/Header/Header";
-import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "@/utils/Theme/ThemeContext";
+import Gradient from "@/components/UI/Gradient";
 function ProductScreen() {
   const { theme } = useTheme();
-  console.log("logged in ");
+  //console.log("logged in ");
   return (
-    <LinearGradient
-      colors={theme.gradient as any}
-      locations={[0, 0.2, 0.8, 1]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 0 }}
-      style={styles.container}
+    <Gradient
+     
     >
       <Header />
       <CategoryList />
       <ProductList />
-    </LinearGradient>
+    </Gradient>
   );
 }
 const styles = StyleSheet.create({

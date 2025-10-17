@@ -2,7 +2,7 @@ import { getProducts, getProductsByCategory } from "@/api/products";
 import { useQuery } from "@tanstack/react-query";
 
 const useProducts = (category?: string) => {
-    console.log("refetching")
+    //console.log("refetching")
   const query = useQuery({
     queryKey: ["products", category || "all"],
     queryFn: () => {

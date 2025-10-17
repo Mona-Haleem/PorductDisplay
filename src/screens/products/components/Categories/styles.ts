@@ -18,6 +18,7 @@ const useStyles = makeThemedStyles((theme) => ({
     fontWeight: "bold",
     color: theme.colors.text,
     marginBottom: 10,
+    marginLeft:10
   },
   emptyText: {
     textAlign: "center",

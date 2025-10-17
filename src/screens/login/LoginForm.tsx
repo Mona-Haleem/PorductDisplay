@@ -1,32 +1,30 @@
 import Input from "@/components/UI/Input";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { KeyboardAvoidingView, Text } from "react-native";
 import { useStyles } from "./styles";
 import Button from "@/components/UI/Button";
 import { Ionicons } from "@expo/vector-icons";
 import { useLogin } from "./useLogin";
 import Loading from "@/components/UI/Loading/loading";
-import { ErrorView } from "@/components/UI/Error/ErrorIndicator";
-import Toast from "react-native-toast-message";
-import { getFriendlyErrorMessage } from "@/utils/Theme/helpers";
+import { getFriendlyErrorMessage } from "@/utils/helpers";
 
 function LoginForm() {
-  console.log("Rendering LoginForm");
+  //console.log("Rendering LoginForm");
   const styles = useStyles();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const loginMutation = useLogin();
-  console.log(
-    "Login mutation state:",
-    loginMutation.status,
-    loginMutation.isPending,
-    loginMutation.isError,
-    loginMutation.isSuccess
-  );
+  //console.log(
+   // "Login mutation state:",
+  //   loginMutation.status,
+  //   loginMutation.isPending,
+  //   loginMutation.isError,
+  //   loginMutation.isSuccess
+  // );
 
-   const handelLogin = useCallback(() => {
+  const handelLogin = useCallback(() => {
     if (!username || !password) return;
     loginMutation.mutate({ username, password });
   }, [username, password, loginMutation]);
@@ -64,7 +62,7 @@ function LoginForm() {
       />
       <Button
         onPress={handelLogin}
-        disapled={loginMutation.isPending || (!username || !password)}
+        disapled={loginMutation.isPending || !username || !password}
         title="Sign in"
       />
       {/* <Button
