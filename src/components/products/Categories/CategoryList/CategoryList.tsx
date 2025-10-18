@@ -2,7 +2,7 @@ import { FlatList, Text, View } from "react-native";
 import useStyles from "../styles";
 
 import useCategories from "@/hooks/Product/useCategories";
-import renderEmpty from "@/components/UI/emptyList";
+import renderEmpty from "@/components/ui/emptyList";
 import Category from "../Category/Category";
 
 function CategoryList() {

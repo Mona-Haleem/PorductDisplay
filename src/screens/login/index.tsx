@@ -1,7 +1,7 @@
 import { useStyles } from "./styles";
 import Header from "./Header";
 import LoginForm from "./LoginForm";
-import Gradient from "@/components/UI/Gradient";
+import Gradient from "@/components/ui/Gradient";
 
 function LoginScreen() {
   const styles = useStyles();

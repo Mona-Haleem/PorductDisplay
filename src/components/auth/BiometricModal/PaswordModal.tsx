@@ -2,9 +2,9 @@ import { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import { useQueryClient } from "@tanstack/react-query";
-import Button from "@/components/UI/Button";
+import Button from "@/components/ui/button";
 import { Ionicons } from "@expo/vector-icons";
-import Input from "@/components/UI/Input";
+import Input from "@/components/ui/input";
 import { toggleBiometricModal } from "@/store/slices/UISlice";
 
 const PasswordModal: React.FC = () => {

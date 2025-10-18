@@ -1,12 +1,13 @@
 import { getMe, login } from "@/api/auth";
 import { AppDispatch } from "@/store";
-import { setLoadingState, setUser, toggleBiometricModal } from "@/store/slices/authSlice";
+import {  setUser  } from "@/store/slices/authSlice";
 import { getFriendlyErrorMessage } from "@/utils/helpers";
 import { storage } from "@/utils/storaeg";
 import { loginCredentials } from "@/types/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Toast from "react-native-toast-message";
 import { useDispatch } from "react-redux";
+import { setLoadingState } from "@/store/slices/UISlice";
 
 export function useLogin() {
   const queryClient = useQueryClient();

@@ -1,11 +1,11 @@
-import Input from "@/components/UI/Input";
+import Input from "@/components/ui/input";
 import { useCallback, useState } from "react";
 import { KeyboardAvoidingView, Text } from "react-native";
 import { useStyles } from "./styles";
-import Button from "@/components/UI/Button";
+import Button from "@/components/ui/button";
 import { Ionicons } from "@expo/vector-icons";
 import { useLogin } from "../../hooks/Auth/useLogin";
-import Loading from "@/components/UI/Loading/loading";
+import Loading from "@/components/ui/Loading/loading";
 import { getFriendlyErrorMessage } from "@/utils/helpers";
 
 function LoginForm() {

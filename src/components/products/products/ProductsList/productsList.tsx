@@ -2,7 +2,7 @@ import { FlatList, Text, View } from "react-native";
 import ProductCard from "../product/Product";
 import useStyles from "../style";
 import useProducts from "@/hooks/Product/useProduct/useProducts";
-import renderEmpty from "@/components/UI/emptyList";
+import renderEmpty from "@/components/ui/emptyList";
 
 function ProductList({ category }: { category?: string }) {
   const styles = useStyles();

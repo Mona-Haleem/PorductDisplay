@@ -1,15 +1,15 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
-import BaseModal from "@/components/UI/modal/modal";
+import BaseModal from "@/components/ui/modal/modal";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
 import { useDeleteProduct } from "@/hooks/Product/UseDeleteProduct/useDeleteProduct";
 import { useStyles } from "./style";
 import { setShowDeleteModal } from "@/store/slices/UISlice";
-import Loading from "@/components/UI/Loading/loading";
-import Button from "@/components/UI/Button";
+import Loading from "@/components/ui/Loading/loading";
+import Button from "@/components/ui/button";
 const DeleteModal = () => {
   const { deleteModal } = useSelector((state: RootState) => state.UI);
   const styles = useStyles();

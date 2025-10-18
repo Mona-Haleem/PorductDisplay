@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import { startBiometricAuth } from "@/utils/helpers";
-import Button from "@/components/UI/Button";
+import Button from "@/components/ui/button";
 import { useStyles } from "./style";
 import { toggleBiometricModal } from "@/store/slices/UISlice";
 
