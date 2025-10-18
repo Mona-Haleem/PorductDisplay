@@ -1,13 +1,13 @@
 import MainNavigator from "@/navigation/MainNavigator";
 import { store } from "@/store";
-import { ThemeProvider } from "@/utils/Theme/ThemeContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
-
 import { Provider } from "react-redux";
-import { mmkvPersister } from "@/utils/storage";
-import { OfflineIndicator } from "@/components/offlineIndicator";
+import { mmkvPersister } from "@/utils/storaeg";
+import { OfflineIndicator } from "@/components/Layout/offlineIndicator";
+import { ThemeProvider } from "@/Theme/ThemeContext";
+
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

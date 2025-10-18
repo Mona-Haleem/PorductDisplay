@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
-import InactivityTimeReducer from "./slices/InactivityTimerSlice";
+import UIReducer from "./slices/UISlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    InactivityTime:InactivityTimeReducer
+    UI:UIReducer
   },
 });
 

@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useDispatch } from "react-redux";
 import ProductsNavigator from "./ProductsNavigator";
 import useStyles from "./styles";
-import {  useCallback } from "react";
-import { mmkvPersister } from "@/utils/storage";
+import { useCallback } from "react";
+import { mmkvPersister } from "@/utils/storaeg";
 import { useQueryClient } from "@tanstack/react-query";
 
 const Tab = createBottomTabNavigator();
@@ -13,17 +13,14 @@ const Tab = createBottomTabNavigator();
 export default function AppNavigator() {
   const dispatch = useDispatch();
   const styles = useStyles();
-    const queryClient = useQueryClient();
-  console.log('mounting app Navigator')
+  const queryClient = useQueryClient();
 
   const handleLogout = useCallback(
     async (e: any) => {
-      console.log('logging out ...............')
       e.preventDefault();
       queryClient.clear();
 
-  // 3. Remove persisted cache from MMKV
-  await mmkvPersister.removeClient();
+      await mmkvPersister.removeClient();
 
       dispatch(signOut());
     },

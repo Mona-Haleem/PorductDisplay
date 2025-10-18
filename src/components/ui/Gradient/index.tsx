@@ -1,5 +1,5 @@
+import { useTheme } from "@/Theme/ThemeContext";
 import { LinearGradient } from "expo-linear-gradient";
-import { useTheme } from "@/utils/Theme/ThemeContext";
 
 type GradientProps = {
   style?: object;
@@ -10,11 +10,10 @@ function Gradient({
   children,
 }: GradientProps) {
   const { theme } = useTheme();
-  //console.log("Rendering Gradient");
   return (
     <LinearGradient
       colors={theme.gradient as any}
-      locations={[0, 0.4, 0.6, 1]}
+      locations={[0, 0.35, 0.65, 1]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
       style={style}

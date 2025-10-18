@@ -35,7 +35,6 @@ const Input: React.FC<InputProps> = ({
       setError(errorMessage || 'Invalid input');
     setIsFocused(false);
   }
-  //console.log('input rerendered')
 
   return (
     <View style={[styles.container, containerStyle]}>

@@ -51,6 +51,11 @@
     "testEnvironment": "node",
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^expo-asset$": "./__mocks__/expo-asset.js",
+      "^expo-font$": "./__mocks__/expo-font.js",
+      "^@expo/vector-icons$": "./__mocks__/@expo/vector-icons.js"
+    }
   }
 }

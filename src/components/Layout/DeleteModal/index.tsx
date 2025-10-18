@@ -1,0 +1,61 @@
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store";
+import BaseModal from "@/components/UI/modal/modal";
+
+import { Ionicons } from "@expo/vector-icons";
+import { Text, View } from "react-native";
+import { useDeleteProduct } from "@/hooks/Product/UseDeleteProduct/useDeleteProduct";
+import { useStyles } from "./style";
+import { setShowDeleteModal } from "@/store/slices/UISlice";
+import Loading from "@/components/UI/Loading/loading";
+import Button from "@/components/UI/Button";
+const DeleteModal = () => {
+  const { deleteModal } = useSelector((state: RootState) => state.UI);
+  const styles = useStyles();
+  const { mutate: deleteProduct, isPending } = useDeleteProduct();
+  const dispatch = useDispatch<AppDispatch>();
+  const handelDeleteConfirm = useCallback(() => {
+    deleteProduct(deleteModal.productId);
+  }, [deleteProduct, deleteModal]);
+
+  const handelCancelDelete = useCallback(() => {
+    dispatch(
+      setShowDeleteModal({
+        productId: 0,
+        productTitle: "",
+        visisble: false,
+      })
+    );
+  }, [deleteProduct, deleteModal]);
+  return (
+    <BaseModal showModal={deleteModal.visisble} onClose={() => {}}>
+      <View style={styles.lockIcon}>
+        <Ionicons name="trash" size={50} color={styles.lockIcon.color} />
+      </View>
+
+      <Text style={styles.message}>
+        confirm Deleteing{" "}
+        <Text style={styles.highlight}>{deleteModal.productTitle}</Text>
+      </Text>
+      {isPending && <Loading />}
+      <Button
+        varient="outline"
+        btnStyles={styles.btn}
+        btnTextStyles={styles.btnText}
+        title="Delete"
+        onPress={handelDeleteConfirm}
+        disapled={isPending}
+      />
+      <Button
+        btnStyles={styles.btn}
+        btnTextStyles={styles.btnText}
+        title="cancel"
+        disapled={isPending}
+        onPress={handelCancelDelete}
+      />
+    </BaseModal>
+  );
+};
+
+export default DeleteModal;

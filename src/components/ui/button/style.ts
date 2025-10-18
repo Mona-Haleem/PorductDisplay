@@ -1,4 +1,4 @@
-import { makeThemedStyles } from "@/utils/Theme/makeThemedStyles";
+import { makeThemedStyles } from "@/Theme/makeThemedStyles";
 
 const styles = makeThemedStyles((theme) => ({
   baseButton: {

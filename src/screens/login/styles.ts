@@ -1,4 +1,4 @@
-import { makeThemedStyles } from "@/utils/Theme/makeThemedStyles";
+import { makeThemedStyles } from "@/Theme/makeThemedStyles";
 
 export const useStyles = makeThemedStyles((theme) => ({
   container: {

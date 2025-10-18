@@ -1,5 +1,5 @@
 import { API_BASE } from "@/utils/CONSTANTS";
-import { loginCredentials } from "@/utils/types/auth";
+import { loginCredentials } from "@/types/auth";
 import axios from "axios";
 
 

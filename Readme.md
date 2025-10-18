@@ -34,15 +34,17 @@ npm run dev
 ## Authentication Details:
 
 ##### Superadmin Credentials
+
 ```
-Username: emilys  
+Username: emilys
 Password: emilyspass
 ```
 
 Biometric Support: Automatically detects available device biometrics (fingerprint, Face ID, etc.) with password fallback.
 
 ## Choosen Categories:
- Tap any category button in the categories list to view filtered products. The app supports all categories from the DummyJSON API.
+
+Tap any category button in the categories list to view filtered products. The app supports all categories from the DummyJSON API.
 
 ## Technical Implementation
 
@@ -76,25 +78,32 @@ src/
 ├── navigation/   # React Navigation setup
 ├── screens/      # Login, Products, Category screens
 ├── store/        # Redux slices (auth, ui)
-├── utils/        # MMKV storage, theming, helpers
+├── Theme/        # Theme Context , objects
+├── utils/        # MMKV storage, constants, helpers
 └── types/        # TypeScript definitions
 ```
 
-## Trade-offs & Considerations
+## Trade-offs & Considerations:
 
-<!-- - **Password Caching**:
 
-  - Online: Could call /auth/login with username + password, but username would need to be cached
+1.**Biometric Authentication Fallback**:
 
-  - Offline: No way to validate credentials without cached data
-  - For biometric password fallback to work offline, user credentials are cached during login. Password validation occurs against cached data when offline
-  **Production Consideration:** In a real-world scenario, this would be replaced with:
+  - **Implementation**: User credentials cached during login for offline password validation
+  - **Trade-off**: Security best practices vs. meeting offline biometric requirement
+  - **Favoured Solution**:
+        - Biometric-key encrypted storage
+        - Proper token refresh mechanisms
 
-    - Secure app-level PIN code system
-    - Proper token refresh mechanisms
-    - Biometric-key encrypted storage
+2.**Auto-lock Timer Reset**
+    - **Implementation**: Gesture handler for press detection combined with Redux state tracking navigation changes.
 
-- **Testing**: Basic test setup implemented with Jest and React Testing Library. With more time, comprehensive test coverage would be added. -->
+    - **Trade-off**: Comprehensive coverage (screen touches + navigation) vs. potential missed interactions (typing, scrolling)
+
+    - **Favoured Solution**:
+        - Implement PanResponder for comprehensive gesture detection
+        - Keyboard and scroll event listeners
+        - Sophisticated activity monitoring library
+    
 
 ## If I Had More Time
 
@@ -104,16 +113,15 @@ src/
 
 - Comprehensive test coverage
 
-- Performance optimization and monitoring
-
 ### Notes
 
 All required technologies (React Native, TypeScript, React Navigation, React Query, MMKV, Redux Toolkit) were used as specified. Additional added libraries:
 
 - **`@react-native-community/netinfo`** - Required for offline indicator
-- **`expo-local-authentication`** - Required for biometric features  
+- **`expo-local-authentication`** - Required for biometric features
 - **`react-native-toast-message`** - Enhanced error UI (nice-to-have)
 - **`@expo/vector-icons`** - Clean UI icons
+- **`react-native-gesture-handler`** – Gesture handling for autiLock timer reset.
 - **`axios`** - Robust HTTP client
 
 All additions are lightweight and directly address challenge requirements.

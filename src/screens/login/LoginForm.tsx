@@ -4,25 +4,17 @@ import { KeyboardAvoidingView, Text } from "react-native";
 import { useStyles } from "./styles";
 import Button from "@/components/UI/Button";
 import { Ionicons } from "@expo/vector-icons";
-import { useLogin } from "./useLogin";
+import { useLogin } from "../../hooks/Auth/useLogin";
 import Loading from "@/components/UI/Loading/loading";
 import { getFriendlyErrorMessage } from "@/utils/helpers";
 
 function LoginForm() {
-  //console.log("Rendering LoginForm");
   const styles = useStyles();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const loginMutation = useLogin();
-  //console.log(
-   // "Login mutation state:",
-  //   loginMutation.status,
-  //   loginMutation.isPending,
-  //   loginMutation.isError,
-  //   loginMutation.isSuccess
-  // );
 
   const handelLogin = useCallback(() => {
     if (!username || !password) return;
@@ -65,11 +57,6 @@ function LoginForm() {
         disapled={loginMutation.isPending || !username || !password}
         title="Sign in"
       />
-      {/* <Button
-          varient="secondary"
-          onPress={() => {}}
-          title="Don't have an account? sign up"
-          /> */}
     </KeyboardAvoidingView>
   );
 }

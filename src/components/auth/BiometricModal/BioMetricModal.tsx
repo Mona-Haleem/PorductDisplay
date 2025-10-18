@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
-import { toggleBiometricModal } from "@/store/slices/authSlice";
 import { startBiometricAuth } from "@/utils/helpers";
 import Button from "@/components/UI/Button";
 import { useStyles } from "./style";
+import { toggleBiometricModal } from "@/store/slices/UISlice";
 
 const BioMetricModal = ({
   setBiometricAvailable,

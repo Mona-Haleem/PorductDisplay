@@ -1,10 +1,9 @@
-import { StyleSheet } from "react-native";
 
-import CategoryList from "./components/Categories/CategoryList";
-import ProductList from "./components/products/productsList";
-import Header from "./components/Header/Header";
+import CategoryList from "@/components/products/Categories/CategoryList/CategoryList";
+import Header from "@/components/products/Header/Header";
+import ProductList from "@/components/products/products/ProductsList/productsList";
 import Gradient from "@/components/UI/Gradient";
-import useSetScreen from "./hooks/UseSetScreen";
+import useSetScreen from "@/hooks/UI/UseSetScreen";
 function ProductScreen() {
   useSetScreen();
   return (
@@ -15,14 +14,5 @@ function ProductScreen() {
     </Gradient>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "space-between",
-    padding: 0,
-    flex: 1,
-    paddingHorizontal: 30,
-    backgroundColor: "#fff", //theme.colors.background,
-  },
-});
 
 export default ProductScreen;

@@ -1,0 +1,15 @@
+import { makeThemedStyles } from "@/Theme/makeThemedStyles";
+
+const useStyles = makeThemedStyles((theme) => ({
+  container: {
+    backgroundColor: theme.colors.primary,
+    padding: 8,
+    alignItems: "center",
+  },
+  text: {
+    color: "white",
+    fontWeight: "600",
+  },
+}));
+
+export default useStyles;
