@@ -34,15 +34,15 @@ npm run dev
 ## Authentication Details:
 
 ##### Superadmin Credentials
-
+```
 Username: emilys  
 Password: emilyspass
+```
 
 Biometric Support: Automatically detects available device biometrics (fingerprint, Face ID, etc.) with password fallback.
 
-## Navigation & Categories:
-
-Category Access: Tap any category button in the categories list to view filtered products. The app supports all categories from the DummyJSON API.
+## Choosen Categories:
+ Tap any category button in the categories list to view filtered products. The app supports all categories from the DummyJSON API.
 
 ## Technical Implementation
 
@@ -82,19 +82,19 @@ src/
 
 ## Trade-offs & Considerations
 
-- **Password Caching**:
+<!-- - **Password Caching**:
 
   - Online: Could call /auth/login with username + password, but username would need to be cached
 
   - Offline: No way to validate credentials without cached data
   - For biometric password fallback to work offline, user credentials are cached during login. Password validation occurs against cached data when offline
-    **Production Consideration:** In a real-world scenario, this would be replaced with:
+  **Production Consideration:** In a real-world scenario, this would be replaced with:
 
-- Secure app-level PIN code system
-- Proper token refresh mechanisms
-- Biometric-key encrypted storage
+    - Secure app-level PIN code system
+    - Proper token refresh mechanisms
+    - Biometric-key encrypted storage
 
-- **Testing**: Basic test setup implemented with Jest and React Testing Library. With more time, comprehensive test coverage would be added.
+- **Testing**: Basic test setup implemented with Jest and React Testing Library. With more time, comprehensive test coverage would be added. -->
 
 ## If I Had More Time
 

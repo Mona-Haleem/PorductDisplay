@@ -13,7 +13,11 @@ import useStyles from "./styles";
 import { useEffect } from "react";
 import { useTheme } from "@/utils/Theme/ThemeContext";
 import { storage } from "@/utils/storage";
-import { setLoadingState, setUser, toggleBiometricModal } from "@/store/slices/authSlice";
+import {
+  setLoadingState,
+  setUser,
+  toggleBiometricModal,
+} from "@/store/slices/authSlice";
 import useUser from "./useUser";
 import Loading from "@/components/UI/Loading/loading";
 import Gradient from "@/components/UI/Gradient";
@@ -22,6 +26,7 @@ import { getFriendlyErrorMessage } from "@/utils/helpers";
 import LockOverlay from "@/components/LockOverlay";
 import AuthModal from "@/components/auth/BiometricModal";
 import DeleteModal from "@/components/DeleteModal";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 export default function MainNavigator() {
   const token = storage.getString("accessToken");
   const dispatch = useDispatch();
@@ -31,12 +36,19 @@ export default function MainNavigator() {
 
   const { theme } = useTheme();
   const style = useStyles();
-  
-  const { data, isLoading,  error } = useUser();
-  console.log("User in MainNavigator:", isLoading,  error ,!!token, user, theme.mode);
+
+  const { data, isLoading, error } = useUser();
+  console.log(
+    "User in MainNavigator:",
+    isLoading,
+    error,
+    !!token,
+    user,
+    theme.mode
+  );
 
   useEffect(() => {
-    if (data && user?.source !=="loginScreen") {
+    if (data && user?.source !== "loginScreen") {
       dispatch(setUser({ username: data.username, image: data.image }));
       dispatch(toggleBiometricModal(true));
       dispatch(setLoadingState(false));
@@ -47,11 +59,11 @@ export default function MainNavigator() {
         text2: "Please try again later.",
       });
       dispatch(setLoadingState(false));
-    } 
-    if(!token) dispatch(setLoadingState(false))
+    }
+    if (!token) dispatch(setLoadingState(false));
 
     //console.log("fetched data", data);
-  }, [data, error,token]);
+  }, [data, error, token]);
 
   if (loading || isLoading)
     return (
@@ -67,12 +79,14 @@ export default function MainNavigator() {
       <SafeAreaView style={style.container}>
         <StatusBar style="auto" translucent={true} />
         {user ? (
-          <LockOverlay>
-            {biometricModalShown && <AuthModal />}
-            {deleteModal.visisble && <DeleteModal />}
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <LockOverlay>
+              {biometricModalShown && <AuthModal />}
+              {deleteModal.visisble && <DeleteModal />}
 
-            <AppNavigator />
-          </LockOverlay>
+              <AppNavigator />
+            </LockOverlay>
+          </GestureHandlerRootView>
         ) : (
           <AuthNavigator />
         )}

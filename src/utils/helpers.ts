@@ -1,6 +1,18 @@
+import { AppDispatch } from "@/store";
+import { toggleBiometricModal } from "@/store/slices/authSlice";
 import { Ionicons } from "@expo/vector-icons";
 import * as LocalAuthentication from "expo-local-authentication";
+import { AUTO_LOCK_TIME } from "./CONSTANTS";
 
+export const handelTimerReset = (dispatch:AppDispatch) =>{
+  console.log("reseting timer")
+  return setTimeout(() => {
+      console.log(
+      "[LockOverlay] Inactivity timer expired — showing biometric modal"
+    );
+    dispatch(toggleBiometricModal(true));
+    }, AUTO_LOCK_TIME)
+}
 export const checkBiometricAvailability = async () => {
     try {
       const compatible = await LocalAuthentication.hasHardwareAsync();

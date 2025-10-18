@@ -33,8 +33,8 @@ export const useDeleteProduct = () => {
       });
       allProductQueries.forEach(([key, data]) => {
         queryClient.setQueryData(key, (old: any[]) =>
-          old?.map((p) =>
-            p.id === deletedProduct!.id ? { ...p, isDeleted: true } : p
+          old?.filter((p) =>
+            p.id !== deletedProduct!.id 
           )
         );
       });

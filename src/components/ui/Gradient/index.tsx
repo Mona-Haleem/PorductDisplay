@@ -18,6 +18,7 @@ function Gradient({
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
       style={style}
+      pointerEvents="box-none" 
     >
       {children}
     </LinearGradient>

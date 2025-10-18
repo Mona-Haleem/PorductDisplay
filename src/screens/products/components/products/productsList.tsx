@@ -4,17 +4,28 @@ import useStyles from "./style";
 import useProducts from "../../hooks/useProducts";
 import renderEmpty from "@/components/emptyList";
 import { Product } from "@/utils/types/product";
+import { useDispatch } from "react-redux";
+import {
+  clearTimer,
+  resetTimer,
+  setTimer,
+} from "@/store/slices/InactivityTimerSlice";
+import { handelTimerReset } from "@/utils/helpers";
 
 function ProductList({ category }: { category?: string }) {
   const styles = useStyles();
   const { data, error, isRefetching, isLoading, refetch } =
     useProducts(category);
-
+  const dispatch = useDispatch();
   //console.log("Rendering ProductList");
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.titleContainer}>
-        {category && <Text style={[styles.title ,styles.highlight]}>{category?.replace("-", " ") ?? "Featured"}</Text>}
+        {category && (
+          <Text style={[styles.title, styles.highlight]}>
+            {category?.replace("-", " ") ?? "Featured"}
+          </Text>
+        )}
         <Text style={styles.title}>Products</Text>
       </View>
       <FlatList
@@ -30,7 +41,7 @@ function ProductList({ category }: { category?: string }) {
         //   />
         // }
 
-        data={data?.filter((item: Product) => !item.isDeleted)}
+        data={data}
         numColumns={2}
         keyExtractor={(item) => item.title}
         renderItem={({ item }) => <ProductCard product={item} />}
