@@ -3,8 +3,8 @@
 1.**Clone the repository**:
 
 ```
-git clone https://github.com/Mona-Haleem/PorductDisplay.git
-cd productsDisplay
+git clone https://github.com/Mona-Haleem/ProductDisplay.git
+cd ProductDisplay
 ```
 
 2.**Install dependencies**:
